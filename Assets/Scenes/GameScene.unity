@@ -583,15 +583,15 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1000012290941292, guid: 5e86572b87c46c9428fbdea6ebed2884, type: 2}
+      propertyPath: m_Name
+      value: player
+      objectReference: {fileID: 0}
     - target: {fileID: 114000013471825900, guid: 5e86572b87c46c9428fbdea6ebed2884,
         type: 2}
       propertyPath: gameCam
       value: 
       objectReference: {fileID: 1137729425}
-    - target: {fileID: 1000012290941292, guid: 5e86572b87c46c9428fbdea6ebed2884, type: 2}
-      propertyPath: m_Name
-      value: player
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e86572b87c46c9428fbdea6ebed2884, type: 2}
   m_IsPrefabParent: 0
@@ -1943,21 +1943,21 @@ Prefab:
       propertyPath: m_Name
       value: playerBase
       objectReference: {fileID: 0}
-    - target: {fileID: 224000012891487274, guid: 48d65f8a49d7bcd488f623047b2e5903,
-        type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224000012891487274, guid: 48d65f8a49d7bcd488f623047b2e5903,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 114000010796157778, guid: 48d65f8a49d7bcd488f623047b2e5903,
         type: 2}
       propertyPath: camController
       value: 
       objectReference: {fileID: 1137729427}
+    - target: {fileID: 224000012891487274, guid: 48d65f8a49d7bcd488f623047b2e5903,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000012891487274, guid: 48d65f8a49d7bcd488f623047b2e5903,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 48d65f8a49d7bcd488f623047b2e5903, type: 2}
   m_IsPrefabParent: 0

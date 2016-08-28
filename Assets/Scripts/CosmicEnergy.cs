@@ -8,9 +8,12 @@ public class CosmicEnergy : MonoBehaviour
     public EnergyAgent sourceEnergyAgent;
     public EnergyAgent targetEnergyAgent;
 
+    private Base _playerBase;
+
 
 	void Start ()
 	{
+	    _playerBase = FindObjectOfType<Base>();
 	    sourceEnergyAgent = GetComponent<EnergyAgent>();
 	}
 
@@ -24,6 +27,11 @@ public class CosmicEnergy : MonoBehaviour
             targetEnergyAgent = playerCom.energyAgent;
             if (!playerCom.LastCosmicEnergies.Contains(this))
             {
+                if (_playerBase.LastCosmicEnergies.Contains(this))
+                {
+                    _playerBase.LastCosmicEnergies.Remove(this);
+                    _playerBase.TakeEnergy(-1, true);
+                }
                 playerCom.unitEnergy.TakeEnergy(1);
                 playerCom.LastCosmicEnergies.Add(this);
             }

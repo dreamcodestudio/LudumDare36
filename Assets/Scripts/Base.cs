@@ -11,8 +11,16 @@ public class Base : MonoBehaviour
     [HideInInspector]
     public List<CosmicEnergy> LastCosmicEnergies = new List<CosmicEnergy>();
 
+    [Header("Audio")] public AudioClip takeEnergyAudio;
+
     private int _currentEnergy;
     private bool _isDead;
+    private AudioSource _audioSource;
+
+    void Awake()
+    {
+        _audioSource = GetComponent<AudioSource>();
+    }
 
     void OnTriggerEnter(Collider target)
     {
@@ -26,6 +34,10 @@ public class Base : MonoBehaviour
                 TakeEnergy(1);
                 playerCom.unitEnergy.TakeEnergy(-1); 
                 LastCosmicEnergies.Add(playerCom.LastCosmicEnergies[i]);
+            }
+            if (playerCom.LastCosmicEnergies.Count > 0)
+            {
+                _audioSource.PlayOneShot(takeEnergyAudio);
             }
             playerCom.LastCosmicEnergies.Clear();
         }
@@ -42,14 +54,14 @@ public class Base : MonoBehaviour
         }
     }
 
-    public void TakeEnergy(int amount)
+    public void TakeEnergy(int amount, bool fromCosmicEnergy = false)
     {
         if (_isDead)
             return;
         _currentEnergy += amount;
         if (_currentEnergy <= 0)
         {
-            GameThreadManager.Instance.uiHudManadger.userMsg.text = "Don't forget protect base";
+            GameThreadManager.Instance.uiHudManadger.userMsg.text = fromCosmicEnergy ? "Base  without energy" : "Don't forget protect base";
             GameThreadManager.Instance.uiHudManadger.userMsg.DOFade(2f, 1f);
             OnDeath();
         }

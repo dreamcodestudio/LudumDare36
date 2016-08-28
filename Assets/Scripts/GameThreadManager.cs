@@ -47,6 +47,14 @@ public class GameThreadManager : MonoBehaviour
         vignetteEffect.blur = 0.4f;
     }
 
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+    }
+
     private void SpawnEnemy(Vector3 pos)
     {
         var enemyGo = (GameObject)Instantiate(enemyPrefab, pos, Quaternion.identity);
