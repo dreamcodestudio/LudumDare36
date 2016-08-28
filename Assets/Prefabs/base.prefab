@@ -317,6 +317,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   energyAgent: {fileID: 114000010003490034}
   energySlider: {fileID: 114000014230362320}
+  cosmicEnergyGo: {fileID: 1000012195777216}
 --- !u!114 &114000011088368334
 MonoBehaviour:
   m_ObjectHideFlags: 1

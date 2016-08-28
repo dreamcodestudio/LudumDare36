@@ -18,7 +18,7 @@ public class CosmicEnergy : MonoBehaviour
     {
         if (target.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Player on energy column");
+            //Debug.Log("Player on energy column");
             beamGo.gameObject.SetActive(true);
             var playerCom = target.GetComponentInParent<Player>();
             targetEnergyAgent = playerCom.energyAgent;
