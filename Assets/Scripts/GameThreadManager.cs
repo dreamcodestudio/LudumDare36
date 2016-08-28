@@ -18,6 +18,7 @@ public class GameThreadManager : MonoBehaviour
     }
 
     public int startEnemies = 2;
+    public int startEnergies = 4;
     public GameObject enemyPrefab;
     public GameObject pickupEnergyPrefab;
     public Transform[] spawnPoints;
@@ -35,15 +36,15 @@ public class GameThreadManager : MonoBehaviour
         _instance = this;
         _uiHudManager = FindObjectOfType<UIHudManager>();
         //
-        StartCoroutine(StartSpawn(7f));
+        StartCoroutine(StartSpawnEnemies(7f));
         //
-        SpawnEnergyRandom();
-        SpawnEnergyRandom();
-        SpawnEnergyRandom();
-        SpawnEnergyRandom();
-        SpawnEnergyRandom();
-        SpawnEnergyRandom();
-        SpawnEnergyRandom();
+        StartSpawnEnergy();
+    }
+
+    void Start()
+    {
+        vignetteEffect.intensity = 0.03f;
+        vignetteEffect.blur = 0.4f;
     }
 
     private void SpawnEnemy(Vector3 pos)
@@ -54,7 +55,7 @@ public class GameThreadManager : MonoBehaviour
         availableEnemies.Add(enemyCom);
     }
 
-    private void SpawnEnemyRandom()
+    public void SpawnEnemyRandom()
     {
         var pos = spawnPoints[Random.Range(0, spawnPoints.Length)].position;
         var enemyGo = (GameObject)Instantiate(enemyPrefab, pos, Quaternion.identity);
@@ -63,7 +64,7 @@ public class GameThreadManager : MonoBehaviour
         availableEnemies.Add(enemyCom);
     }
 
-    private IEnumerator StartSpawn(float spawnDelay)
+    private IEnumerator StartSpawnEnemies(float spawnDelay)
     {
         for (var i = 0; i < startEnemies; i++)
         {
@@ -72,11 +73,19 @@ public class GameThreadManager : MonoBehaviour
         }
     }
 
-    private void SpawnEnergyRandom()
+    public void SpawnEnergyRandom()
     {
         var targetPos = new Vector3(Random.Range(-120f, 120f), 0f, Random.Range(-120f, 120f));
         var energyGo = (GameObject)Instantiate(pickupEnergyPrefab, targetPos, Quaternion.identity);
         var energyCom = energyGo.GetComponent<EnergyPickup>();
         availablePickEnergies.Add(energyCom);
+    }
+
+    private void StartSpawnEnergy()
+    {
+        for (var i = 0; i < startEnergies; i++)
+        {
+            SpawnEnergyRandom();
+        }
     }
 }

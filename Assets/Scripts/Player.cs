@@ -5,8 +5,13 @@ using DG.Tweening;
 public class Player : MonoBehaviour
 {
     public EnergyAgent energyAgent;
+    [HideInInspector]
     public List<CosmicEnergy> LastCosmicEnergies = new List<CosmicEnergy>();
     public PlayerEnergy unitEnergy;
+    [Header("Audio")]
+    public AudioClip explosionAudio;
+    public AudioClip pickupAudio;
+    public AudioClip mineInstallAudio;
 
     void Start()
     {

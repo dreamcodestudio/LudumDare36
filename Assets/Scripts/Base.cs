@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 using DG.Tweening;
 
 public class Base : MonoBehaviour
@@ -8,6 +8,8 @@ public class Base : MonoBehaviour
     public UnityEngine.UI.Slider energySlider;
     public GameObject cosmicEnergyGo;
     public CameraController camController;
+    [HideInInspector]
+    public List<CosmicEnergy> LastCosmicEnergies = new List<CosmicEnergy>();
 
     private int _currentEnergy;
     private bool _isDead;
@@ -23,6 +25,7 @@ public class Base : MonoBehaviour
                 playerCom.LastCosmicEnergies[i].SetTargetEnergyAgent(energyAgent);
                 TakeEnergy(1);
                 playerCom.unitEnergy.TakeEnergy(-1); 
+                LastCosmicEnergies.Add(playerCom.LastCosmicEnergies[i]);
             }
             playerCom.LastCosmicEnergies.Clear();
         }
@@ -31,6 +34,11 @@ public class Base : MonoBehaviour
             var enemyCom = target.GetComponentInParent<Enemy>();
             enemyCom.unitEnergy.TakeEnergy(-100);
             TakeEnergy(-1);
+            if (LastCosmicEnergies.Count > 0)
+            {
+                LastCosmicEnergies[0].SetTargetEnergyAgent(LastCosmicEnergies[0].sourceEnergyAgent);
+                LastCosmicEnergies.RemoveAt(0);
+            }
         }
     }
 
@@ -49,7 +57,7 @@ public class Base : MonoBehaviour
         {
             if (_currentEnergy >= 10)
             {
-                GameThreadManager.Instance.uiHudManadger.userMsg.text = "You win";
+                GameThreadManager.Instance.uiHudManadger.userMsg.text = "You win, to be continued...";
                 GameThreadManager.Instance.uiHudManadger.userMsg.DOFade(2f, 1f);
                 Camera.main.DOOrthoSize(100f, 15f);
             }
@@ -63,5 +71,7 @@ public class Base : MonoBehaviour
         camController.target = transform;
         cosmicEnergyGo.SetActive(false);
         Camera.main.DOOrthoSize(50f, 10f);
+        GameThreadManager.Instance.uiHudManadger.restartBtn.gameObject.SetActive(true);
+        DOTween.To(value => GameThreadManager.Instance.uiHudManadger.restartBtn.GetComponent<CanvasGroup>().alpha = value, 0.0f, 1f, 1.25f);
     }
 }
