@@ -12,7 +12,7 @@ public class EnergyPickup : MonoBehaviour
             GameThreadManager.Instance.availablePickEnergies.Remove(this);
             if (GameThreadManager.Instance.availablePickEnergies.Count == 1)
             {
-                for (var i = 0; i < 2; i++)
+                for (var i = 0; i < 7; i++)
                 {
                     GameThreadManager.Instance.SpawnEnergyRandom();
                 }

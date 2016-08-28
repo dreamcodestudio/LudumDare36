@@ -890,7 +890,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startEnemies: 2
-  startEnergies: 4
+  startEnergies: 10
   enemyPrefab: {fileID: 1000011511645854, guid: 3e8c456b1c64ddf4089e8a94d7b67496,
     type: 2}
   pickupEnergyPrefab: {fileID: 1000012259839324, guid: 013a96c53b25fe34e8cae48218ea132d,
@@ -1951,12 +1951,12 @@ Prefab:
     - target: {fileID: 224000012891487274, guid: 48d65f8a49d7bcd488f623047b2e5903,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224000012891487274, guid: 48d65f8a49d7bcd488f623047b2e5903,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 48d65f8a49d7bcd488f623047b2e5903, type: 2}

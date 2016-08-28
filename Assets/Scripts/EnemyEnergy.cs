@@ -52,10 +52,10 @@ public class EnemyEnergy : MonoBehaviour
         GameThreadManager.Instance.availableEnemies.Remove(enemyCom);
         if (GameThreadManager.Instance.availableEnemies.Count == 1)
         {
-            for (var i = 0; i < 2; i++)
-            {
+            //for (var i = 0; i < 2; i++)
+            //{
                 GameThreadManager.Instance.SpawnEnemyRandom();
-            }
+            //}
         }
         yield return new WaitForSeconds(delay);
         gameObject.SetActive(false);
