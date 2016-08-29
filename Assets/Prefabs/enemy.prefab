@@ -43,6 +43,7 @@ GameObject:
   - 65: {fileID: 65000012279461268}
   - 114: {fileID: 114000011824337144}
   - 82: {fileID: 82000014228436186}
+  - 114: {fileID: 114000013970739492}
   m_Layer: 0
   m_Name: enemy
   m_TagString: Enemy
@@ -242,6 +243,7 @@ MonoBehaviour:
   startEnergy: 1
   explosionPrefab: {fileID: 191186, guid: 079954accd64b32419ec069129c81273, type: 2}
   explosionAudio: {fileID: 8300000, guid: 35c449ffab869574ab5c29f17a483146, type: 3}
+  mapMarker: {fileID: 114000013970739492}
 --- !u!114 &114000011936985736
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -254,6 +256,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   angles: {x: 0, y: 90, z: 0}
+--- !u!114 &114000013970739492
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011511645854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 492392c310a924d4291d26c3c333296b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  markerSprite: {fileID: 21300000, guid: afb023e63c5f1b646a83ad530fad2a0e, type: 3}
+  markerSize: 8
+  isActive: 1
 --- !u!195 &195000011423021462
 NavMeshAgent:
   m_ObjectHideFlags: 1

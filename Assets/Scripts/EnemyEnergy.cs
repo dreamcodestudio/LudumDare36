@@ -6,6 +6,7 @@ public class EnemyEnergy : MonoBehaviour
     public int startEnergy = 1;
     public GameObject explosionPrefab;
     public AudioClip explosionAudio;
+    public MapMarker mapMarker;
 
     private float _currenEnergy;
     private bool _isDead;
@@ -52,12 +53,16 @@ public class EnemyEnergy : MonoBehaviour
         GameThreadManager.Instance.availableEnemies.Remove(enemyCom);
         if (GameThreadManager.Instance.availableEnemies.Count == 1)
         {
-            //for (var i = 0; i < 2; i++)
-            //{
-                GameThreadManager.Instance.SpawnEnemyRandom();
-            //}
+            StartCoroutine(SpawnEnemy(3.0f));
         }
+        mapMarker.isActive = false; 
         yield return new WaitForSeconds(delay);
         gameObject.SetActive(false);
+    }
+
+    private IEnumerator SpawnEnemy(float after)
+    {
+        yield return new WaitForSeconds(after);
+        GameThreadManager.Instance.SpawnEnemyRandom();
     }
 }
