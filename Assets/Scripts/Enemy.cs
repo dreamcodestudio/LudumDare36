@@ -7,8 +7,17 @@ public class Enemy : MonoBehaviour
     public NavMeshAgent navMeshAgent;
     public Transform target;
 
+	private BoxCollider _collider;
+
 	void Start ()
 	{
+		_collider = GetComponent<BoxCollider>();
 	    navMeshAgent.SetDestination(target.position);
+	}
+
+	public void Stop()
+	{
+		_collider.enabled = false;
+		navMeshAgent.Stop();
 	}
 }

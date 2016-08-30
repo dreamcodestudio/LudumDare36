@@ -50,19 +50,17 @@ public class EnemyEnergy : MonoBehaviour
         _explosionParticels.gameObject.SetActive(true);
         _enemyMesh.enabled = false;
         var enemyCom = GetComponent<Enemy>();
+        enemyCom.Stop();
         GameThreadManager.Instance.availableEnemies.Remove(enemyCom);
-        if (GameThreadManager.Instance.availableEnemies.Count == 1)
-        {
-            StartCoroutine(SpawnEnemy(3.0f));
-        }
         mapMarker.isActive = false; 
         yield return new WaitForSeconds(delay);
-        gameObject.SetActive(false);
+        StartCoroutine(SpawnEnemy(12.0f));
     }
 
     private IEnumerator SpawnEnemy(float after)
     {
         yield return new WaitForSeconds(after);
         GameThreadManager.Instance.SpawnEnemyRandom();
+        gameObject.SetActive(false);
     }
 }
